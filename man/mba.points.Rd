@@ -8,7 +8,7 @@
 }
 
 \usage{
-mba.points(xyz, xy.est, n = 1, m = 1, h = 8, ...)
+mba.points(xyz, xy.est, n = 1, m = 1, h = 8, extend = TRUE, verbose = TRUE, ...)
 }
 
 \arguments{
@@ -31,6 +31,11 @@ mba.points(xyz, xy.est, n = 1, m = 1, h = 8, ...)
     n = m = 1 and h = 8, the resulting spline surface has a coefficient
     grid of size \eqn{2^h}{2^h} + 3 = 259 in each direction of the
     spline surface. See references for additional information. }
+  \item{extend}{if FALSE, points in \code{xy.est} that fall outside of
+    the domain defined by \code{xyz} are set to NA with a warning; otherwise, the
+    domain is extended to accommodate points in \code{xy.ext}
+    with a warning. }
+  \item{verbose}{if TRUE, warning messages are printed to the screen. }
    \item{...}{currently no additional arguments.  }
 }
 
