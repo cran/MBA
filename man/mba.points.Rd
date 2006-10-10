@@ -8,7 +8,8 @@
 }
 
 \usage{
-mba.points(xyz, xy.est, n = 1, m = 1, h = 8, extend = TRUE, verbose = TRUE, ...)
+mba.points(xyz, xy.est, n = 1, m = 1, h = 8, extend = TRUE,
+           verbose = TRUE, ...)
 }
 
 \arguments{
@@ -33,7 +34,7 @@ mba.points(xyz, xy.est, n = 1, m = 1, h = 8, extend = TRUE, verbose = TRUE, ...)
     spline surface. See references for additional information. }
   \item{extend}{if FALSE, points in \code{xy.est} that fall outside of
     the domain defined by \code{xyz} are set to NA with a warning; otherwise, the
-    domain is extended to accommodate points in \code{xy.ext}
+    domain is extended to accommodate points in \code{xy.est}
     with a warning. }
   \item{verbose}{if TRUE, warning messages are printed to the screen. }
    \item{...}{currently no additional arguments.  }

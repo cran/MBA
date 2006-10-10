@@ -23,10 +23,11 @@
 
   if(!extend){
     hpts <- chull(xyz[,c(1,2)])
+    hpts <- c(hpts, hpts[1])
   }else{
     hpts <- NULL
   }
-
+  
   xyz <- as.matrix(xyz)
   storage.mode(xyz) <- "double"
   
