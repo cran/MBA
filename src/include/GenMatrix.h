@@ -75,7 +75,7 @@ public:
     std::cout << "GenMatrix:: copy constructor not implemented, use init()" << std::endl;
     std::cout << "EXIT FROM GenMatrix:: copy constructor" << std::endl;
 
-    exit(-1);
+    this->exit(-1);
   }
   
   

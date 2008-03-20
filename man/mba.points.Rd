@@ -60,7 +60,7 @@ For additional documentation and references please see:
 
 \url{http://home.simula.no/~oyvindhj/MultilevelDoc/mba/html/index.html}.
 
-This minor portion of the MBA codebase was ported by Andrew O. Finley \email{afinley@stat.umn.edu}.
+This minor portion of the MBA codebase was ported by Andrew O. Finley \email{finleya@msu.edu}.
 }
 
 \examples{
