@@ -8,7 +8,8 @@
 }
 
 \usage{
-mba.surf(xyz, no.X, no.Y, n = 1, m = 1, h = 8, extend=FALSE, ...)
+mba.surf(xyz, no.X, no.Y, n = 1, m = 1, h = 8, extend=FALSE,
+         sp=FALSE, ...)
 }
 
 \arguments{
@@ -31,18 +32,31 @@ mba.surf(xyz, no.X, no.Y, n = 1, m = 1, h = 8, extend=FALSE, ...)
     spline surface. See references for additional information. }
   \item{extend}{if FALSE, a convex hull is computed for the input points
     and all matrix elements in z that have centers outside of this
-    polygon are set to NA; otherwise, all elements in z are given an
+    polygon are set to \code{NA}; otherwise, all elements in z are given an
     estimated z value. }
+  \item{sp}{if TRUE, the resulting surface is returned as a
+  \code{SpatialPixelsDataFrame} object; otherwise, the surface is in
+  \code{image} format.}
    \item{...}{currently no additional arguments.  }
 }
 
 \value{
-  List with 1 component:
+  List with 8 component:
   \item{xyz.est}{a list that contains vectors x, y and the \eqn{no.X
       \times no.Y}{no.X x no.Y} matrix z of estimated z-values. }
+  \item{no.X}{\code{no.X} from arguments.} 
+  \item{no.Y}{\code{no.Y} from arguments.} 
+  \item{n}{\code{n} from arguments.} 
+  \item{m}{\code{m} from arguments.} 
+  \item{h}{\code{h} from argumens.} 
+  \item{extend}{\code{extend} from arguments.} 
+  \item{sp}{\code{sp} from arguments.} 
 }
 
 \note{
+If \code{no.X != no.Y} then use \code{sp=TRUE} for compatibility with
+the \code{image} function.
+  
 The function \code{mba.surf} relies on the Multilevel B-spline
 Approximation (MBA) algorithm.  The underlying code was developed at
 SINTEF Applied Mathematics by Dr. Oyvind Hjelle.  Dr. Oyvind Hjelle
