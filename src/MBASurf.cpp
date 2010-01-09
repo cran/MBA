@@ -7,7 +7,8 @@
 
 extern "C" {
 
-  SEXP MBASurf(SEXP xyz, SEXP noX, SEXP noY, SEXP m, SEXP n, SEXP h, SEXP extend, SEXP hpts) {
+  SEXP MBASurf(SEXP xyz, SEXP noX, SEXP noY, SEXP m, SEXP n, SEXP h, SEXP extend, SEXP hpts,
+	       SEXP xMinDom, SEXP xMaxDom, SEXP yMinDom, SEXP yMaxDom){
 
     int i,j,k;
     int nProtect = 0;
@@ -30,6 +31,8 @@ extern "C" {
     //init
     MBA mba(x_arr, y_arr, z_arr);
     
+    mba.setDomain(REAL(xMinDom)[0],REAL(yMinDom)[0],REAL(xMaxDom)[0],REAL(yMaxDom)[0]);
+  	 
     mba.MBAalg(INTEGER(m)[0], INTEGER(n)[0], INTEGER(h)[0]);
 
     //retrieve the spline surface and evaluate

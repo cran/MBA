@@ -37,7 +37,9 @@ mba.surf(xyz, no.X, no.Y, n = 1, m = 1, h = 8, extend=FALSE,
   \item{sp}{if TRUE, the resulting surface is returned as a
   \code{SpatialPixelsDataFrame} object; otherwise, the surface is in
   \code{image} format.}
-   \item{...}{currently no additional arguments.  }
+  \item{...}{\code{b.box} is an optional vector to sets the bounding
+    box. The vector's elements are minimum x, maximum x, minimum y, and maximum
+    y, respectively.  }
 }
 
 \value{
@@ -48,9 +50,10 @@ mba.surf(xyz, no.X, no.Y, n = 1, m = 1, h = 8, extend=FALSE,
   \item{no.Y}{\code{no.Y} from arguments.} 
   \item{n}{\code{n} from arguments.} 
   \item{m}{\code{m} from arguments.} 
-  \item{h}{\code{h} from argumens.} 
+  \item{h}{\code{h} from arguments.} 
   \item{extend}{\code{extend} from arguments.} 
-  \item{sp}{\code{sp} from arguments.} 
+  \item{sp}{\code{sp} from arguments.}
+  \item{b.box}{\code{b.box} defines the bounding box over which z is estimated.}
 }
 
 \note{
@@ -68,7 +71,7 @@ Graphics, 3(3):229--244, 1997.
 
 For additional documentation and references please see:
 
-\url{http://home.simula.no/~oyvindhj/MultilevelDoc/mba/html/index.html}.
+\url{www.sintef.no/upload/IKT/9011/geometri/MBA/mba_doc/index.html}.
 
 This minor portion of the MBA codebase was ported by Andrew O. Finley
 \email{finleya@msu.edu}.

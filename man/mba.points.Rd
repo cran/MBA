@@ -58,7 +58,7 @@ Graphics, 3(3):229-244, 1997.
 
 For additional documentation and references please see:
 
-\url{http://home.simula.no/~oyvindhj/MultilevelDoc/mba/html/index.html}.
+\url{www.sintef.no/upload/IKT/9011/geometri/MBA/mba_doc/index.html}.
 
 This minor portion of the MBA codebase was ported by Andrew O. Finley \email{finleya@msu.edu}.
 }

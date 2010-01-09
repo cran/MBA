@@ -1,4 +1,4 @@
-"mba.surf" <- function(xyz, no.X, no.Y,  n = 1, m = 1, h = 8, extend = FALSE, sp=FALSE, ...){
+"mba.surf" <- function(xyz, no.X, no.Y,  n=1, m=1, h=8, extend=FALSE, sp=FALSE, ...){
 
   ####################################################
   ##Check for unused args
@@ -6,7 +6,7 @@
   formal.args <- names(formals(sys.function(sys.parent())))
   elip.args <- names(list(...))
   for(i in elip.args){
-    if(! i %in% formal.args)
+    if(! i %in% c(formal.args,"b.box"))
       warning("'",i, "' is not a parameter")
   }
   
@@ -27,11 +27,28 @@
   }else{
     hpts <- NULL
   }
+
+  x.min.dom <- min(xyz[,1]); x.max.dom <- max(xyz[,1])
+  y.min.dom <- min(xyz[,2]); y.max.dom <- max(xyz[,2])
+  
+  if("b.box"%in%elip.args){
+    b.box <- list(...)$b.box
+    if(b.box[1] < x.min.dom){x.min.dom <- b.box[1]}else{warning("b.box[1] set to min x value")}
+    if(b.box[2] > x.max.dom){x.max.dom <- b.box[2]}else{warning("b.box[2] set to max x value")}
+    if(b.box[3] < y.min.dom){y.min.dom <- b.box[3]}else{warning("b.box[3] set to min y value")}
+    if(b.box[4] > y.max.dom){y.max.dom <- b.box[4]}else{warning("b.box[4] set to max y value")} 
+  }
   
   xyz <- as.matrix(xyz)
   storage.mode(xyz) <- "double"
+  storage.mode(x.min.dom) <- "double"
+  storage.mode(x.max.dom) <- "double"
+  storage.mode(y.min.dom) <- "double"
+  storage.mode(y.max.dom) <- "double" 
   
-  out <- .Call("MBASurf", xyz, as.integer(no.X), as.integer(no.Y), as.integer(m), as.integer(n), as.integer(h), as.integer(extend), as.integer(hpts))
+  out <- .Call("MBASurf", xyz, as.integer(no.X), as.integer(no.Y), as.integer(m), as.integer(n),
+               as.integer(h), as.integer(extend), as.integer(hpts),
+               x.min.dom, x.max.dom, y.min.dom, y.max.dom)
 
   if(sp){
     xy <- expand.grid(out[["x"]], out[["y"]])
@@ -51,5 +68,6 @@
   out$h <- h
   out$extend <- extend
   out$sp <- sp
+  out$b.box <- c(x.min.dom,x.max.dom,y.min.dom,y.max.dom)
   out
 }
