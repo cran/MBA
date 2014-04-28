@@ -1,5 +1,5 @@
 useDynLib(MBA)
-
+import(sp)
 export(mba.surf)
 export(mba.points)
 

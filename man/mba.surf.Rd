@@ -78,11 +78,11 @@ This minor portion of the MBA codebase was ported by Andrew O. Finley
 }
 
 \examples{
+\dontrun{
 data(LIDAR)
 
 mba.int <- mba.surf(LIDAR, 300, 300, extend=TRUE)$xyz.est
 
-\dontrun{
 ##Image plot
 image(mba.int, xaxs="r", yaxs="r")
 
