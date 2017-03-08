@@ -46,15 +46,15 @@
   storage.mode(y.min.dom) <- "double"
   storage.mode(y.max.dom) <- "double" 
   
-  out <- .Call("MBASurf", xyz, as.integer(no.X), as.integer(no.Y), as.integer(m), as.integer(n),
+  out <- .Call(MBASurf, xyz, as.integer(no.X), as.integer(no.Y), as.integer(m), as.integer(n),
                as.integer(h), as.integer(extend), as.integer(hpts),
                x.min.dom, x.max.dom, y.min.dom, y.max.dom)
 
-  if(sp){
+  if(sp && requireNamespace("sp", quietly=TRUE)) {
     xy <- expand.grid(out[["x"]], out[["y"]])
     grid <- data.frame(z=matrix(out[["z"]], as.integer(length(out[["x"]])*length(out[["y"]])), 1),x=xy[,1], y=xy[,2])
-    coordinates(grid) = ~x+y
-    gridded(grid) <- TRUE
+    sp::coordinates(grid) = ~x+y
+    sp::gridded(grid) <- TRUE
   }else{
     grid <- out[c("x","y","z")]
   }

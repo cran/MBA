@@ -1,6 +1,6 @@
 #include "include/MBA.h"
+#include "include/RMBA.h"
 #include <boost/shared_ptr.hpp>
-
 #include <R.h>
 #include <Rinternals.h>
 #include <iostream>

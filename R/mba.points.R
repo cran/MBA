@@ -27,7 +27,7 @@
   xy.est <- as.matrix(xy.est)
   storage.mode(xyz) <- storage.mode(xy.est) <- "double"
   
-  out <- .Call("MBAPoints", xyz, xy.est,  as.integer(m), as.integer(n), as.integer(h), as.integer(extend), as.integer(verbose))
+  out <- .Call(MBAPoints, xyz, xy.est,  as.integer(m), as.integer(n), as.integer(h), as.integer(extend), as.integer(verbose))
   
   out1 <- list()
   out1$xyz.est <- cbind(xy.est, out)

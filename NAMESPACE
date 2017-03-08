@@ -1,5 +1,7 @@
-useDynLib(MBA)
-import(sp)
+useDynLib(MBA, MBAPoints, MBASurf)
+#import(sp)
+importFrom("grDevices", "chull")
+
 export(mba.surf)
 export(mba.points)
 

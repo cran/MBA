@@ -62,19 +62,16 @@ the \code{image} function.
   
 The function \code{mba.surf} relies on the Multilevel B-spline
 Approximation (MBA) algorithm.  The underlying code was developed at
-SINTEF Applied Mathematics by Dr. Oyvind Hjelle.  Dr. Oyvind Hjelle
+SINTEF Applied Mathematics by Dr. Øyvind Hjelle.  Dr. Øyvind Hjelle
 based the algorithm on the paper by the originators of Multilevel B-splines:
 
-S. Lee, G. Wolberg, and S. Y. Shin. Scattered data interpolation with
+S. Lee, G. Wolberg, and S. Y. Shin. (1997) Scattered data interpolation with
 multilevel B-splines. IEEE Transactions on Visualization and Computer
-Graphics, 3(3):229--244, 1997.
+Graphics, 3(3):229--244.
 
-For additional documentation and references please see:
+For additional documentation and references see:
 
 \url{www.sintef.no/upload/IKT/9011/geometri/MBA/mba_doc/index.html}.
-
-This minor portion of the MBA codebase was ported by Andrew O. Finley
-\email{finleya@msu.edu}.
 }
 
 \examples{
