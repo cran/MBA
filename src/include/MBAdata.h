@@ -47,7 +47,7 @@
  * member functions.
  * See further documentation in MBA and MBAadaptive
  * 
- * \author Øyvind Hjelle <Oyvind.Hjelle@math.sintef.no>
+ * \author Oyvind Hjelle <Oyvind.Hjelle@math.sintef.no>
  * \see MBA, MBAadaptive, MBAdataPar
  */
 //===========================================================================

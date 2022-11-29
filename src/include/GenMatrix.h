@@ -53,7 +53,7 @@ static void myMessage(int i, int j) {
  * The indices goes from -1.
  * The class has reserve (and capasity) functionality similar to std::vector.
  * 
- * \author Øyvind Hjelle <Oyvind.Hjelle@math.sintef.no>
+ * \author Oyvind Hjelle <Oyvind.Hjelle@math.sintef.no>
  */
 //===========================================================================
 

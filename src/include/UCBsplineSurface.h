@@ -45,7 +45,7 @@ namespace UCBspl {
    *
    *  SplineSurface - A uniform cubic B-spline surface compatible with that
    *  produced by the SINTEF MBA library.
-   * \author Øyvind Hjelle <Oyvind.Hjelle@math.sintef.no>
+   * \author Oyvind Hjelle <Oyvind.Hjelle@math.sintef.no>
    */
   class SplineSurface {
     typedef GenMatrix<UCBspl_real> GenMatrixType;

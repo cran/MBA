@@ -58,7 +58,7 @@ Graphics, 3(3):229--244.
 
 For additional documentation and references see:
 
-\url{www.sintef.no/upload/IKT/9011/geometri/MBA/mba_doc/index.html}.
+\url{https://www.sintef.no/upload/IKT/9011/geometri/MBA/mba_doc/index.html}.
 }
 
 \examples{

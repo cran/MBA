@@ -70,7 +70,7 @@
    double z = surf.f(x,y);         // evaluate (height of) surface in (x,y)
    surf.gradf(x,y, nx,ny,nz);      // evaluate normal vector in (x,y)
    \endcode
- * \author Øyvind Hjelle <Oyvind.Hjelle@math.sintef.no>
+ * \author Oyvind Hjelle <Oyvind.Hjelle@math.sintef.no>
  * \see MBAadaptive, MBApar, MBAadaptivePar for adaptive and parametric versions.
  */
 //===========================================================================
