@@ -1,8 +1,8 @@
 #include "include/MBA.h"
 #include "include/RMBA.h"
 #include <boost/shared_ptr.hpp>
-#include <R.h>
-#include <Rinternals.h>
+//#include <R.h>
+//#include <Rinternals.h>
 #include <iostream>
 
 extern "C" {
@@ -14,7 +14,7 @@ extern "C" {
     int nProtect = 0;
     SEXP xyzPts, X, Y, Z;
 
-    PROTECT(xyzPts = getAttrib(xyz, R_DimSymbol)); nProtect++;      
+    PROTECT(xyzPts = Rf_getAttrib(xyz, R_DimSymbol)); nProtect++;      
     int nPts = INTEGER(xyzPts)[0];
 
     typedef std::vector<double> dVec;
@@ -42,9 +42,9 @@ extern "C" {
     int noU = INTEGER(noX)[0];
     int noV = INTEGER(noY)[0];
 
-    PROTECT(X = allocVector(REALSXP, noU)); nProtect++;
-    PROTECT(Y = allocVector(REALSXP, noV)); nProtect++;
-    PROTECT(Z = allocMatrix(REALSXP, noV, noU)); nProtect++;
+    PROTECT(X = Rf_allocVector(REALSXP, noU)); nProtect++;
+    PROTECT(Y = Rf_allocVector(REALSXP, noV)); nProtect++;
+    PROTECT(Z = Rf_allocMatrix(REALSXP, noV, noU)); nProtect++;
 
     //U=X=col and V=Y=row
     double u, du, v, dv;
@@ -69,7 +69,7 @@ extern "C" {
     if(!INTEGER(extend)[0]){
       for(i = 0; i < noU; i++){
 	for(j = 0; j < noV; j++){
-	  for(k = 0; k < length(hpts)-1; k++){
+	  for(k = 0; k < Rf_length(hpts)-1; k++){
 	    if(((REAL(Y)[j]-REAL(xyz)[nPts+(INTEGER(hpts)[k])-1])*(REAL(xyz)[(INTEGER(hpts)[k+1])-1]-REAL(xyz)[(INTEGER(hpts)[k])-1]) - (REAL(X)[i]-REAL(xyz)[(INTEGER(hpts)[k])-1])*(REAL(xyz)[nPts+(INTEGER(hpts)[k+1])-1]-REAL(xyz)[nPts+(INTEGER(hpts)[k])-1])) > 0.0){
 	      REAL(Z)[j*noU+i] = NA_REAL;
 	      break;
@@ -82,18 +82,18 @@ extern "C" {
     //return obj
     SEXP retList, retListNames;
     
-    PROTECT(retList = allocVector(VECSXP, 3)); nProtect++;
-    PROTECT(retListNames = allocVector(STRSXP, 3)); nProtect++;
+    PROTECT(retList = Rf_allocVector(VECSXP, 3)); nProtect++;
+    PROTECT(retListNames = Rf_allocVector(STRSXP, 3)); nProtect++;
 
     SET_VECTOR_ELT(retList, 0, X);
     SET_VECTOR_ELT(retList, 1, Y);
     SET_VECTOR_ELT(retList, 2, Z);
     
-    SET_STRING_ELT(retListNames, 0, mkChar("x"));
-    SET_STRING_ELT(retListNames, 1, mkChar("y"));
-    SET_STRING_ELT(retListNames, 2, mkChar("z"));
+    SET_STRING_ELT(retListNames, 0, Rf_mkChar("x"));
+    SET_STRING_ELT(retListNames, 1, Rf_mkChar("y"));
+    SET_STRING_ELT(retListNames, 2, Rf_mkChar("z"));
 
-    namesgets(retList, retListNames);
+    Rf_namesgets(retList, retListNames);
 
     //clean-up
     mba.cleanup(2);

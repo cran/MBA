@@ -1,8 +1,8 @@
 #include "include/MBA.h"
 #include "include/RMBA.h"
 #include <boost/shared_ptr.hpp>
-#include <R.h>
-#include <Rinternals.h>
+//#include <R.h>
+//#include <Rinternals.h>
 #include <string>
 
 extern "C" {
@@ -14,7 +14,7 @@ extern "C" {
     SEXP xyzPts, Z;
 
     //get the surface points
-    PROTECT(xyzPts = getAttrib(xyz, R_DimSymbol)); nProtect++;      
+    PROTECT(xyzPts = Rf_getAttrib(xyz, R_DimSymbol)); nProtect++;      
     int nPts = INTEGER(xyzPts)[0];
 
     typedef std::vector<double> dVec;
@@ -34,7 +34,7 @@ extern "C" {
     double minYSurf = *std::min_element((*y_arr).begin(), (*y_arr).end());
 
     //get the points
-    xyzPts = getAttrib(xyzEst, R_DimSymbol);      
+    xyzPts = Rf_getAttrib(xyzEst, R_DimSymbol);      
     int nEstPts = INTEGER(xyzPts)[0];
 
     double maxXPt = REAL(xyzEst)[0];
@@ -82,7 +82,7 @@ extern "C" {
     double umin, vmin, umax, vmax;
     surface.getDomain(umin, vmin, umax, vmax);
     
-    PROTECT(Z = allocVector(REALSXP, nEstPts)); nProtect++;
+    PROTECT(Z = Rf_allocVector(REALSXP, nEstPts)); nProtect++;
     
     int ptsOutSide = 0;
     for (i = 0; i < nEstPts; i++){
@@ -97,10 +97,10 @@ extern "C" {
 
     if(INTEGER(verbose)[0]){
       if(extendDirection != "")
-	warning("domain extended in the %sdirection(s)\n", extendDirection.c_str());
+	Rf_warning("domain extended in the %sdirection(s)\n", extendDirection.c_str());
       
       if(ptsOutSide)
-	warning("%i point(s) fell outside the domain and were set to NA\n", ptsOutSide);
+	Rf_warning("%i point(s) fell outside the domain and were set to NA\n", ptsOutSide);
     }
 
     //clean-up

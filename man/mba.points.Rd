@@ -64,32 +64,40 @@ For additional documentation and references see:
 \examples{
 data(LIDAR)
 
-##split the LIDAR dataset into training and validation sets
-tr <- sample(1:nrow(LIDAR),trunc(0.5*nrow(LIDAR)))
+## Split the LIDAR dataset into training and validation sets.
+tr <- sample(1:nrow(LIDAR), trunc(0.5*nrow(LIDAR)))
 
-##look at how smoothing changes z-approximation,
-##careful the number of B-spline surface coefficients
-##increases at ~2^h in each direction
+## Look at how smoothing changes z-approximation,
+## careful the number of B-spline surface coefficients
+## increases at ~2^h in each direction.
 for(i in 1:10){
   mba.pts <- mba.points(LIDAR[tr,], LIDAR[-tr,c("x","y")], h=i)$xyz.est
   print(sum(abs(LIDAR[-tr,"z"]-mba.pts[,"z"]))/nrow(mba.pts))
 }
 
 \dontrun{
-##rgl or scatterplot3d libraries can be fun
+## rgl or scatterplot3d libraries can be fun.
 library(rgl)
 
-##exaggerate z a bit for effect and take a smaller subset of LIDAR
+# Exaggerate z a bit for effect and take a smaller subset of LIDAR.
 LIDAR[,"z"] <- 10*LIDAR[,"z"]
-tr <- sample(1:nrow(LIDAR),trunc(0.99*nrow(LIDAR)))
+tr <- sample(1:nrow(LIDAR), trunc(0.99*nrow(LIDAR)))
 
-##get the "true" surface
+# Get the "true" surface.
 mba.int <- mba.surf(LIDAR[tr,], 100, 100, extend=TRUE)$xyz.est
 
-open3d()
-surface3d(mba.int$x, mba.int$y, mba.int$z)
+# Make nice colors for the rgl surface.
+zlim <- range(mba.int$z)
+zlen <- zlim[2] - zlim[1] + 1
 
-##now the point estimates
+colorlut <- terrain.colors(zlen) # Height color lookup table.
+
+col <- colorlut[mba.int$z - zlim[1] + 1 ] # Assign colors to heights for each point.
+
+open3d()
+surface3d(mba.int$x, mba.int$y, mba.int$z, color = col)
+
+# Now add the point estimates.
 mba.pts <- mba.points(LIDAR[tr,], LIDAR[-tr,c("x","y")])$xyz.est
 spheres3d(mba.pts[,"x"], mba.pts[,"y"], mba.pts[,"z"],
           radius=5, color="red")

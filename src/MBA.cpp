@@ -45,6 +45,10 @@
 #include <algorithm>
 using namespace std;
 
+#ifndef R_NO_REMAP
+#  define R_NO_REMAP
+#endif
+
 #include <R.h>
 #include <Rinternals.h>
 #include "include/MBA.h"
@@ -83,7 +87,7 @@ bool MBA::adjustForBaseSurface() {
     if (data_.baseType_ != MBA_ZERO) {
 	if (data_.baseType_ != MBA_CONSTLS && data_.baseType_ != MBA_CONSTVAL) {
 	  //throw runtime_error("ERROR, not support for this type of base surface");
-	    error("c++ error: ERROR, not support for this type of base surface.");
+	    Rf_error("c++ error: ERROR, not support for this type of base surface.");
 	    return false;
 	}
     
@@ -140,7 +144,7 @@ void MBA::smoothMatrix(GenMatrixType& matrix, int no_iter)
 
     if (no_iter%2 != 0) {
       //throw runtime_error("Number of smoothing iterations must be pair.");
-      error("c++ error: Number of smoothing iterations must be pair.");
+      Rf_error("c++ error: Number of smoothing iterations must be pair.");
     }
 
     int resX = matrix.noX();
@@ -273,7 +277,7 @@ void MBA::checkError() const {
     int noPoints = data_.size();
     if (noPoints == 0) {
       //throw runtime_error("ERROR, no points. Has cleanup() been run?");
-	error("c++ error: Number of smoothing iterations must be pair.");
+	Rf_error("c++ error: Number of smoothing iterations must be pair.");
     }
   
     double maxErr = -99999.0;

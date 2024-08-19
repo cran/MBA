@@ -80,27 +80,30 @@ data(LIDAR)
 
 mba.int <- mba.surf(LIDAR, 300, 300, extend=TRUE)$xyz.est
 
-##Image plot
-image(mba.int, xaxs="r", yaxs="r")
+# Image plot of the surface.
+image(mba.int, xaxs = "r", yaxs = "r")
 
-##Perspective plot
+# Perspective plot of the surface.
 persp(mba.int, theta = 135, phi = 30, col = "green3", scale = FALSE,
       ltheta = -120, shade = 0.75, expand = 10, border = NA, box = FALSE)
 
-##For a good time I recommend using rgl
+# For a good time, I recommend using rgl.
 library(rgl)
 
-ex <- 10
-x <- mba.int[[1]]
-y <- mba.int[[2]]
-z <- ex*mba.int[[3]]
-zlim <- range(z)
+# Exaggerate z a bit for effect.
+mba.int$z <- 10*mba.int$z
+
+# Make nice colors for the rgl surface.
+zlim <- range(mba.int$z)
 zlen <- zlim[2] - zlim[1] + 1
-colorlut <- heat.colors(as.integer(zlen))
-col <- colorlut[ z-zlim[1]+1 ]
+
+colorlut <- terrain.colors(zlen) # Height color lookup table.
+
+col <- colorlut[mba.int$z - zlim[1] + 1 ] # Assign colors to heights for each point.
 
 open3d()
-surface3d(x, y, z, color=col, back="lines")
+surface3d(mba.int$x, mba.int$y, mba.int$z, color = col)
+
 }
 }
 
