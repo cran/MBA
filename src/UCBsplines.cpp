@@ -32,6 +32,8 @@
 //===========================================================================
 #include "include/UCBsplines.h"
 
+#include <cstdlib>
+
 #ifdef DEBUG_UCBspl
 #include <iostream>
 #endif
@@ -144,7 +146,7 @@ bool UCBspl::restrictCoeffsC2(const GenMatrix<UCBspl_real>& rr, GenMatrix<UCBspl
   if ((old_noX-3)%2 != 0 || (old_noY-3)%2 != 0) {
 #ifdef DEBUG_UCBspl
     cout << "ERROR, invalid grid for projection; see comments in the code above: " << old_noX << " " << old_noY << endl;
-    exit(-1);
+    std::exit(-1);
 #endif
     return false;
   }

@@ -1,4 +1,4 @@
-692615e4ea6b59bdc546c605cf6e9b75 *DESCRIPTION
+49a3b041b5eb259cf6debb14f40fbe6b *DESCRIPTION
 4ed8d0cb4c6369a551874a44cb8f9a96 *NAMESPACE
 c264d14986dfa546523e01b9e14595ec *R/mba.points.R
 1bd1f3d239425430900a064690c54109 *R/mba.surf.R
@@ -11,8 +11,8 @@ c264d14986dfa546523e01b9e14595ec *R/mba.points.R
 36ed11d71bee06c0898bff70840e83d6 *src/MBASurf.cpp
 9438c2d314f9a7900780aefe78e5c3ee *src/MBAdata.cpp
 8dae9b6d5217f7b27d115e01ac451c0d *src/UCBsplineSurface.cpp
-ea215ab4ab7d073664c4e4e91e62bc34 *src/UCBsplines.cpp
-0f6546826cb2598c0b2f1fd788b482f4 *src/include/GenMatrix.h
+061cf45035b188809b04fad65ff7c4e4 *src/UCBsplines.cpp
+3eaa728280e844912da49b8e1a5d5947 *src/include/GenMatrix.h
 365a247ac9abb39e9b8166dc6ef5d51b *src/include/MBA.h
 98b42c6447f680719aa4ceffd3b58dd9 *src/include/MBAdata.h
 81165abb8a2974a1fa46e68c65103d2f *src/include/MBAtypedef.h

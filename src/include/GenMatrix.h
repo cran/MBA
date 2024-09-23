@@ -33,6 +33,7 @@
 #ifndef _GenMatrix_h_
 #define _GenMatrix_h_
 
+#include <cstdlib>
 #include <iostream>
 
 //#define ARRAY_CHECK 1
@@ -75,7 +76,8 @@ public:
     std::cout << "GenMatrix:: copy constructor not implemented, use init()" << std::endl;
     std::cout << "EXIT FROM GenMatrix:: copy constructor" << std::endl;
 
-    this->exit(-1);
+    std::exit(-1);
+    //this->std::exit(-1);
   }
   
   
