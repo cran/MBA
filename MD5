@@ -1,9 +1,12 @@
-49a3b041b5eb259cf6debb14f40fbe6b *DESCRIPTION
+15262be9b25a73a97745c3ccaa27c6c9 *DESCRIPTION
 4ed8d0cb4c6369a551874a44cb8f9a96 *NAMESPACE
 c264d14986dfa546523e01b9e14595ec *R/mba.points.R
 1bd1f3d239425430900a064690c54109 *R/mba.surf.R
+fe707c1c9df2e0ae15884864cafec83b *README.md
 238db0c43a0e4d4967e87516adfeaf66 *data/LIDAR.tab.gz
+632287e2f9e8cfcd176071cad7f2275d *inst/figures/MBA-hex.png
 3d6d9d4c383d9bb30f7be4d4f590ebf3 *man/LIDAR.Rd
+d800995e2b626e225900e065a4bb64a9 *man/figures/logo.png
 155295b3c0f09f801a8077570e11dd65 *man/mba.points.Rd
 34d234167b8d93a29e6d7ed8cf758ee0 *man/mba.surf.Rd
 1b8cd0768ef58381f5d213d3154b0081 *src/MBA.cpp
@@ -22,3 +25,5 @@ c264d14986dfa546523e01b9e14595ec *R/mba.points.R
 7f0b18d79860a7ccede10b66196fefd8 *src/include/UCBtypedef.h
 34401748235f5250181ba319491b9b2f *src/include/checkWIN32andSGI.h
 979ac37930cb5cf39dfcc1af095a3e8b *src/init.cpp
+3697417a29e628ad06eb19822704f14f *tests/testthat.R
+6596cc8a8448712e62ffeb211ade98c3 *tests/testthat/test-mba.R
